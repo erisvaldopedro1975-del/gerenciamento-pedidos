@@ -9,8 +9,9 @@ API REST para gerenciamento de pedidos de uma pequena loja, desenvolvida com **N
 | Nome | RA |
 | :--- | :--- |
 | Pedro Isaque Vieira Pereira | 43827128 |
-| Matheus Castrão Alves | COLOQUE O RA AQUI |
+| Matheus Castrão Alves | 42951933 |
 | Matheus de Jesus Eduardo Ferreira | 45915709 |
+| Gabriel Souza Cunha | 45556059 |
 
 ---
 
