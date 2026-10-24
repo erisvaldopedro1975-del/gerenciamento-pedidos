@@ -2,6 +2,16 @@ let pedidos = [];
 let nextId = 1;
 
 const estadosValidos = ["recebido", "em_preparacao", "enviado", "entregue", "cancelado"];
+const tiposValidos = ["entrega", "retirada"];
+const prioridadesValidas = ["baixa", "normal", "alta"];
+
+const transicoesPermitidas = {
+  recebido: ["em_preparacao", "cancelado"],
+  em_preparacao: ["enviado", "cancelado"],
+  enviado: ["entregue"],
+  entregue: [],
+  cancelado: []
+};
 
 const criarPedido = (dados) => {
   const { cliente, tipo, valor, prioridade } = dados;
@@ -12,11 +22,11 @@ const criarPedido = (dados) => {
   if (valor === undefined || typeof valor !== "number" || valor <= 0) {
     throw { status: 400, message: "O campo 'valor' deve ser numérico e maior que zero." };
   }
-  if (!tipo || typeof tipo !== "string") {
-    throw { status: 400, message: "O campo 'tipo' é obrigatório." };
+  if (!tipo || !tiposValidos.includes(tipo)) {
+    throw { status: 400, message: `O campo 'tipo' é inválido. Valores aceitos: ${tiposValidos.join(", ")}.` };
   }
-  if (!prioridade || typeof prioridade !== "string") {
-    throw { status: 400, message: "O campo 'prioridade' é obrigatório." };
+  if (!prioridade || !prioridadesValidas.includes(prioridade)) {
+    throw { status: 400, message: `O campo 'prioridade' é inválido. Valores aceitos: ${prioridadesValidas.join(", ")}.` };
   }
 
   const novoPedido = {
@@ -48,13 +58,20 @@ const buscarPedidoPorId = (id) => {
 const atualizarStatus = (id, novoStatus) => {
   const pedidoId = Number(id);
   const pedido = pedidos.find(p => p.id === pedidoId);
-  
+
   if (!pedido) {
     throw { status: 404, message: "Pedido não encontrado." };
   }
 
   if (!novoStatus || !estadosValidos.includes(novoStatus)) {
     throw { status: 400, message: `Status inválido. Estados permitidos: ${estadosValidos.join(", ")}` };
+  }
+
+  if (!transicoesPermitidas[pedido.status].includes(novoStatus)) {
+    throw {
+      status: 400,
+      message: `Transição inválida: de '${pedido.status}' para '${novoStatus}' não é permitida.`
+    };
   }
 
   pedido.status = novoStatus;

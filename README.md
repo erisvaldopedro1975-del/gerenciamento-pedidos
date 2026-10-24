@@ -6,8 +6,10 @@ API REST para gerenciamento de pedidos de uma pequena loja, desenvolvida com **N
 
 **Integrantes do grupo:**
 
-| Pedro Isaque Vieira Pereira| 43827128 |
-| Matheus Castrão Alves |   |
+| Nome | RA |
+| :--- | :--- |
+| Pedro Isaque Vieira Pereira | 43827128 |
+| Matheus Castrão Alves | COLOQUE O RA AQUI |
 | Matheus de Jesus Eduardo Ferreira | 45915709 |
 
 ---
