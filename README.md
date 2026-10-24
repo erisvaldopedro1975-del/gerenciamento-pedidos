@@ -215,10 +215,10 @@ Testes manuais feitos com o **Postman**. As capturas de tela estão na pasta [`e
 
 ## 🤖 Uso de IA
 
-**Utilizei IA?** Sim.
+**Utilizamos IA?** Sim.
 
 **Ferramenta:** Claude (Anthropic).
 
 **Tarefas:** estruturação inicial do projeto em camadas (routes, controllers, services), implementação das validações de entrada e geração do README.
 
-**Sugestão aceita:** a IA sugeriu criar um tratamento centralizado de erros e uma estrutura desacoplada em 3 camadas. Aceitei porque separa as responsabilidades (rotas, controle HTTP e regras de negócio) e evita repetir tratamento de erro em cada controller.
+**Sugestão aceita:** a IA sugeriu criar um tratamento centralizado de erros e uma estrutura desacoplada em 3 camadas. Aceitamos porque separa as responsabilidades (rotas, controle HTTP e regras de negócio) e evita repetir tratamento de erro em cada controller.
